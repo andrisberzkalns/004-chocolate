@@ -4,7 +4,8 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import { useMemo } from "react";
-import { KeyboardControlsEntry, KeyboardControls } from "@react-three/drei";
+import { KeyboardControls } from "@react-three/drei";
+import type { KeyboardControlsEntry } from "@react-three/drei";
 import { Provider } from "react-redux";
 import { store } from "~/lib/store";
 

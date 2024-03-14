@@ -11,8 +11,8 @@ import ModelHandler from "./3D/ModelHandler";
 import React from "react";
 // import { DataContext } from "~/lib/contexts/dataContext";
 import { useSelector, useDispatch } from "react-redux";
-import { setOffset, next, previous, set } from "~/lib/slices/dataSlice";
-import { RootState } from "~/lib/store";
+import { setOffset } from "~/lib/slices/dataSlice";
+import type { RootState } from "~/lib/store";
 import { BottomSelector } from "~/components/ui/BottomSelector";
 import { ButtonSelector } from "~/components/ui/ButtonSelector";
 import { getScrollPositionArray } from "~/lib/utils";
@@ -48,7 +48,7 @@ const Scene: React.FC = () => {
   const cameraRef = useRef(null);
   const scroll = useScroll();
 
-  useFrame((state, delta) => {
+  useFrame(() => {
     dispatch(setOffset(scroll.offset));
     const halfScroll = scroll.el.clientHeight / 2;
     const minScrollDelta = halfScroll / (scroll.el.clientHeight * items.length);
@@ -77,7 +77,7 @@ const Scene: React.FC = () => {
       items.length,
     );
     scroll.el.scrollTo({ top: fromTopMap[selectedIndex] });
-  }, [selectedIndex]);
+  }, [items.length, scroll.el, selectedIndex]);
 
   return (
     <mesh>

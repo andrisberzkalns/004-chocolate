@@ -1,4 +1,5 @@
-import { createSlice, configureStore, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { data as defaultData } from "~/lib/data";
 
 type ItemDataType = {

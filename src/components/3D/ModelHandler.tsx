@@ -1,13 +1,14 @@
 import * as THREE from "three";
 import React, { useEffect, useRef, useState } from "react";
+import { useEffectOnce } from "react-use";
 import { useGLTF, useAnimations, PerspectiveCamera } from "@react-three/drei";
-import { GLTF } from "three-stdlib";
+import type { GLTF } from "three-stdlib";
 import { useFrame } from "@react-three/fiber";
 import * as misc from "maath/misc";
 import { ChocolateChips } from "../Chocolate_chips";
 import { ChocolateTypes } from "~/lib/data";
 import { useSelector } from "react-redux";
-import { RootState } from "~/lib/store";
+import type { RootState } from "~/lib/store";
 import { visibleWidthAtZDepth, visibleHeightAtZDepth } from "~/lib/utils";
 import { Model } from "~/components/3D/Model";
 
@@ -126,7 +127,7 @@ const ModelHandler: React.FC<ModelsProps> = ({ offset, cameraRef }) => {
     });
   }, [offset]);
 
-  useEffect(() => {
+  useEffectOnce(() => {
     cameras.forEach((cameraAction) => {
       cameraAction.CameraAction!.play().paused = true;
     });
@@ -135,7 +136,7 @@ const ModelHandler: React.FC<ModelsProps> = ({ offset, cameraRef }) => {
     const camera = CamerasMap.get(ChocolateTypes.title);
     if (!camera) return;
     camera.time = camera.getClip().duration * 1;
-  }, []);
+  });
 
   useFrame((state, delta) => {
     const finalColor = new THREE.Color();

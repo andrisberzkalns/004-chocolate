@@ -20,8 +20,7 @@ type ModelProps = {
 };
 
 export function Model(props: ModelProps) {
-  const { offset, action, material, geometry, groupRef, maxWidth, maxHeight } =
-    props;
+  const { offset, action, maxWidth } = props;
   useEffect(() => {
     if (action) action.play().paused = true;
   }, [action]);

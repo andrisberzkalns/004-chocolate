@@ -4,7 +4,7 @@ import React from "react";
 // import { DataContext } from "~/lib/contexts/dataContext";
 import { useSelector, useDispatch } from "react-redux";
 import { next, previous } from "~/lib/slices/dataSlice";
-import { RootState } from "~/lib/store";
+import type { RootState } from "~/lib/store";
 
 export const ButtonSelector: React.FC = () => {
   const dispatch = useDispatch();
